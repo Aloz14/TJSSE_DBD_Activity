@@ -1,0 +1,27 @@
+{
+  "name": "community-front",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@arco-design/web-react": "^2.50.2",
+    "axios": "^1.4.0",
+    "element-plus": "^2.3.8",
+    "mock": "^0.1.1",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4"
+  },
+  "devDependencies": {
+    "@arco-design/web-vue": "^2.48.0",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "mockjs": "^1.1.0",
+    "node-sass": "^9.0.0",
+    "sass": "^1.64.0",
+    "sass-loader": "^13.3.2",
+    "vite": "^4.3.9"
+  }
+}
