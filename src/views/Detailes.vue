@@ -1,6 +1,39 @@
+
 <script>
+import axios from 'axios';
 export default {
   name: "detailes",
+  data() {
+    return {
+      activity: {},
+    }
+  },
+  mounted() {
+    // 在挂载时拉取数据
+    this.fetchActivity();
+  },
+  methods:{
+    fetchActivity() {
+      axios.get('/asset/activitiy') 
+        .then(response => {
+          const tmp = response.data.activity;
+          console.log("response.data");
+          console.log(response.data);
+          this.activity = {
+            // 重命名字段
+            src: tmp.act_photoURL,
+            title: tmp.act_name,
+            time: tmp.act_time,
+            join: tmp.act_participants,
+            content: tmp.act_content,
+          };
+          console.log(this.activity);
+        })
+        .catch(error => {
+          console.error('Error fetching activity:', error);
+        });
+    },
+  }
 }
 </script>
 
@@ -11,7 +44,7 @@ export default {
         <a-col :span="50">
           <div class="banner">
                 <img class="image"
-                     src="@/assets/photo.png"
+                     :src="activity.src"
                      alt="photo">
           </div>
         </a-col>
@@ -24,13 +57,13 @@ export default {
             </a-row>
             <div class="main-content">
               <a-row style="margin-top: 20px;">
-                <h2>xxx活动</h2>   
+                <h2>{{ activity.title }}</h2>   
               </a-row>
               <a-row>
-                <p>活动内容</p> 
+                <p>{{ activity.content }}</p> 
               </a-row>
               <a-row>
-                <time class="time">活动时间</time> 
+                <time class="time">{{ activity.time }}</time> 
               </a-row>
               <hr/>
               <div class="comments"> 

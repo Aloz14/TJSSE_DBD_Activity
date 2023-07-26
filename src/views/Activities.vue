@@ -22,7 +22,6 @@ export default {
       axios.get('/asset/activities')  // 这里的URL仅供测试使用，要使用只需连接到数据库即可
         .then(response => {
           // 这里从数据库拉取数据，如果返回了超过9条数据，只取前9条
-          console.log(response.data.activities);
           this.activities = response.data.activities.slice(0, 9).map(activity => {
             return {
               // 重命名字段
